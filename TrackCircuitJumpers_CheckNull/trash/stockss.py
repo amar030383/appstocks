@@ -1,0 +1,25 @@
+from nsepy import get_history
+import pandas as pd
+from datetime import date
+data = get_history(symbol="RAIN", start=date(2021,12,28), end=date(2021,12,31))
+#jumpRation =  (data['High']-data['Low'])
+#data2 =  (jumpRation*100/data.Open)
+#print (data2)
+df3 = ((data.High-data.Low).mul(100)/data.Open).round(1)
+print (df3)
+#print (data.columns)
+#print (data.rpow)
+#print (jumpRation)
+#print (data[['High', 'Low']])
+#print (data['High'].max())
+#print (data[['High', 'Low']].max())
+#print (data[['High', 'Low']].min())
+#print (data[['High', 'Low']].mean())
+#print (data.describe())
+#print (data['High'].describe())
+#print (data['High'].describe().min())
+#print (data['High'].describe().max())
+#print (data['High']>100) Return true or false
+#print (data[data['High']>220])
+#print (data[data['High'] ==data.High.max()])
+#df3 = df3.assign(IPMatchPercenatge = (grp6['IP-Match']/grps['ServersCount']).mul(100).round(1).astype(str)+'%')

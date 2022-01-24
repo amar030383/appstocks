@@ -1,0 +1,59 @@
+{%  extends 'main.html' %}
+{% block content %}
+<br>
+<div class="row">
+	<div class="col-md-12">
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Stock History</a>
+			<table class="table table-">
+				<tr>
+					
+					<th>Symbol</th>
+					<th>Prev Close</th>
+					<th>Open</th>
+					<th>High</th>
+					<th>Low</th>
+					<th>LastTP</th>
+					<th>Close</th>
+					<th>HighLow</th>
+					<th>Jump%</th>
+					<th>Closing Change</th>
+					<th>Rise%</th>
+					
+				</tr>
+				
+				{% for order in paged_data %}
+				<tr>
+					
+					<td>{{ order.Symbol }}</td>
+					<td>{{ order.PrevClose }}</td>
+					<td>{{ order.Open }}</td>
+					<td>{{ order.High }}</td>
+					<td>{{ order.Low }}</td>
+					<td>{{ order.Last }}</td>
+					<td>{{ order.Close }}</td>
+					<td>{{order.HighLow}}</td>
+					<td>{{ order.JumpingPercent }}</td>
+					<td>{{ order.PreClose_Close_Change }}</td>
+					<td>{{ order.RisePercent }}</td>					
+				</tr>
+				{% endfor %}		
+			</table>
+		</div>
+	</div>
+</div>
+
+<br>
+{% if paged_data.has_previous %}
+	<a href="?page=1">&laquo First</a>
+	<a href="?page={{paged_data.previous_page_number }}">Previous</a>
+{% endif %}
+
+Page {{paged_data.number}} of {{paged_data.paginator.num_pages}}
+
+{% if paged_data.has_next %}
+	<a href="?page={{paged_data.next_page_number }}">Next</a>
+	<a href="?page={{paged_data.paginator.num_pages }}">Last &raquo</a>
+{% endif %}
+
+{% endblock %}

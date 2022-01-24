@@ -1,0 +1,60 @@
+{%  extends 'main.html' %}
+{% block content %}
+{% load static %}
+<br>
+<div class="row">
+	<div class="col-md-12">
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Processed Data Details</a>
+			<table class="table-sm">
+				<tr>
+					<th>Name<br><img src="{% static 'images/stock.png'%}"height = '30px'></th>
+					<th>Weeks<br><img src="{% static 'images/week.png'%}"height = '30px'></th>
+					<th>2% Rise<br><img src="{% static 'images/greenUp.png'%}"height = '30px'></th>
+					<th>3% Rise<br><img src="{% static 'images/greenUp.png'%}"height = '30px'></th>
+					<th>4% Rise<br><img src="{% static 'images/greenUp.png'%}"height = '30px'></th>
+					<th>5% Rise<br><img src="{% static 'images/greenUp.png'%}"height = '30px'></th>
+					<th>5% Jump<br><img src="{% static 'images/upDown.png'%}" height = '50px'></th>
+					<th>8% Jump<br><img src="{% static 'images/upDown.png'%}"height = '50px'></th>
+					<th>10% Jump<br><img src="{% static 'images/upDown.png'%}"height = '50px'></th>
+					<th>12% Jump<br><img src="{% static 'images/upDown.png'%}"height = '50px'></th>
+					<th>1% Down<br><img src="{% static 'images/redDown.png'%}"height = '30px'></th>
+					<th>2% Down<br><img src="{% static 'images/redDown.png'%}"height = '30px'></th>
+					<th>3% Down<br><img src="{% static 'images/redDown.png'%}"height = '30px'></th>
+					<th>4% Down<br><img src="{% static 'images/redDown.png'%}"height = '30px'></th>
+					<th>5% Down<br><img src="{% static 'images/redDown.png'%}"height = '30px'></th>
+				</tr>
+				{% for order in analysed_data %}
+				<tr>
+					<td><a href="">{{ order.Symbol }}</a></td>
+					<td>{{ order.Duration }}</td>
+					<td>{{ order.rise2 }}</td>
+					<td>{{ order.rise3 }}</td>
+					<td>{{ order.rise4 }}</td>
+					<td>{{ order.rise5 }}</td>
+					<td>{{ order.Jump5 }}</td>
+					<td>{{ order.Jump8 }}</td>
+					<td>{{ order.Jump10 }}</td>
+					<td>{{ order.Jump12 }}</td>
+					<td>{{ order.Down1 }}</td>
+					<td>{{ order.Down2 }}</td>
+					<td>{{ order.Down3 }}</td>
+					<td>{{ order.Down4 }}</td>
+					<td>{{ order.Down5 }}</td>				
+				</tr>
+				{% endfor %}		
+			</table>
+		</div>
+	</div>
+</div>
+<br>
+{% if analysed_data.has_previous %}
+	<a href="?page=1">&laquo First</a>
+	<a href="?page={{analysed_data.previous_page_number }}">Previous</a>
+{% endif %}
+Page {{analysed_data.number}} of {{analysed_data.paginator.num_pages}}
+{% if analysed_data.has_next %}
+	<a href="?page={{analysed_data.next_page_number }}">Next</a>
+	<a href="?page={{analysed_data.paginator.num_pages }}">Last &raquo</a>
+{% endif %}
+{% endblock %}

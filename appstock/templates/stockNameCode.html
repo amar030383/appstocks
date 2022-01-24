@@ -1,0 +1,47 @@
+{%  extends 'main.html' %}
+{% block content %}
+<br>
+<div class="row">
+	<div class="col-md-12">
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Stock Details</a>
+			<table class="table table-">
+				<tr>
+					<th>Token</th>
+					<th>Stock Name</th>
+					<th>Name</th>
+					<th>Market</th>
+					<th>Created By</th>
+					<th>Created On</th>
+				</tr>
+				
+				{% for order in paged_data %}
+				<tr>
+					<td><a href="">{{ order.token }}</a></td>
+					<td>{{ order.symbol }}</td>
+					<td>{{ order.name }}</td>
+					<td>{{ order.exch_seg }}</td>
+					<td>Amarjeet</td>
+					<td>{{ order.date_created }}</td>
+					
+				</tr>
+				{% endfor %}		
+			</table>
+		</div>
+	</div>
+</div>
+
+<br>
+{% if paged_data.has_previous %}
+	<a href="?page=1">&laquo First</a>
+	<a href="?page={{paged_data.previous_page_number }}">Previous</a>
+{% endif %}
+
+Page {{paged_data.number}} of {{paged_data.paginator.num_pages}}
+
+{% if paged_data.has_next %}
+	<a href="?page={{paged_data.next_page_number }}">Next</a>
+	<a href="?page={{paged_data.paginator.num_pages }}">Last &raquo</a>
+{% endif %}
+
+{% endblock %}

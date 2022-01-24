@@ -1,0 +1,40 @@
+{%  extends 'main.html' %}
+{% block content %}
+<br>
+<div class="row">
+	<div class="col-md-8">
+		<div class="card card-body">
+			<a class="btn btn-success" href="">Rising Start</a>			
+				<table class="table table-">
+					<tr>
+						<th>Duration</th>
+						<th>Symbol</th>
+						<th>Rise3%</th>
+						<th>Rise4%</th>
+						<th>Rise5%</th>
+						<th>Down1</th>
+						<th>Down2</th>
+						<th>Down3</th>
+						<th>Down4</th>
+						<th>Down5</th>
+
+					</tr>
+					{% for order in data %}
+					<tr>
+						<td>{{ order.Duration }}</td>
+						<td>{{ order.Symbol }}</td>
+						<td>{{ order.rise3 }}</td>
+						<td>{{ order.rise4 }}</td>
+						<td>{{ order.rise5 }}</td>
+						<td>{{ order.Down1 }}</td>
+						<td>{{ order.Down2 }}</td>
+						<td>{{ order.Down3 }}</td>
+						<td>{{ order.Down4 }}</td>
+						<td>{{ order.Down5 }}</td>
+					</tr>
+					{% endfor %}		
+				</table>
+		</div>
+	</div>	
+</div>
+{% endblock %}

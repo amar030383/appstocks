@@ -1,0 +1,59 @@
+{%  extends 'main.html' %}
+{% block content %}
+{%  include 'status.html' %}
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+			<a class="btn btn-success" href="">Top Gainers</a>
+			<table class="table table-">
+				<tr> 
+					<th>Name</th>
+					<th>Last Trans Price</th>
+					<th>Prev Close</th>
+					<th>Price Up</th>
+					<th>% Up</th>
+				</tr>
+				
+				{% for order in gainers %}
+				<tr>
+					<td>{{ order.Name }}</td>
+					<td>{{ order.LastTransPrice }}</td>
+					<td>{{ order.PreviousClose }}</td>
+					<td>{{ order.PriceUp }}</td>
+					<td>{{ order.PercentageUp }}</td>
+				</tr>
+				{% endfor %}		
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-danger" href="">Top Loosers</a>
+			<table class="table table-">
+				<tr>
+					<th>Name</th>
+					<th>Last Trans Price</th>
+					<th>Prev Close</th>
+					<th>Price Down</th>
+					<th>% Down</th>
+				</tr>
+				
+				{% for order in losers %}
+				<tr>
+					<td>{{ order.Name }}</td>
+					<td>{{ order.LastTransPrice }}</td>
+					<td>{{ order.PreviousClose }}</td>
+					<td>{{ order.PriceDown }}</td>
+					<td>{{ order.PercentageDown }}</td>
+				</tr>
+				{% endfor %}		
+			</table>
+		</div>
+	</div>
+
+	
+</div>
+
+{% endblock %}
